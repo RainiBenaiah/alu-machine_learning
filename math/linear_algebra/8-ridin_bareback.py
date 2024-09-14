@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Defines a function that multiplies two matrices."""
 
+
 def mat_mul(mat1, mat2):
     """Returns a new matrix that is the product of two 2D matrices."""
 
