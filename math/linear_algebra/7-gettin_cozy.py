@@ -3,20 +3,36 @@
 
 
 def cat_matrices2D(mat1, mat2, axis=0):
-     '''
-    Concatenates two 2D matrices along a specific axis
-    '''
-    if axis == 0 and len(mat1[0]) != len(mat2[0]):
-        return None
-    if axis == 1 and len(mat1) != len(mat2):
-        return None
-    newmat = []
-    for i in range(len(mat1)):
-        newmat.append(mat1[i][:])
-    if axis == 0:
-        for i in range(len(mat2)):
-            newmat.append(mat2[i][:])
-    elif axis == 1:
-        for i in range(len(mat1)):
-            newmat[i] += mat2[i]
-    return newmat
+    """ returns new matrix that is the concatenation of two 2D matrices """
+    if axis is 0:
+        # concatenate rows
+        for row in mat1:
+            mat1_columns = len(row)
+        for row in mat2:
+            mat2_columns = len(row)
+        if mat1_columns != mat2_columns:
+            return None
+        cat_matrix = []
+        for index1, row in enumerate(mat1):
+            cat_matrix.append([])
+            for i in row:
+                cat_matrix[index1].append(i)
+        index1 += 1
+        for index2, row in enumerate(mat2):
+            cat_matrix.append([])
+            for i in row:
+                cat_matrix[index1 + index2].append(i)
+        return cat_matrix
+    if axis is 1:
+        # concatenates columns
+        if len(mat1) != len(mat2):
+            return None
+        cat_matrix = []
+        for index, row in enumerate(mat1):
+            cat_matrix.append([])
+            for i in mat1[index]:
+                cat_matrix[index].append(i)
+            for i in mat2[index]:
+                cat_matrix[index].append(i)
+        return cat_matrix
+    return None

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-""" defines function that slices a matrix using numpy  along specific axes """
-
+"""Define a function  that slices a matrix along specific axes"""
 
 
 def np_slice(matrix, axes={}):
-    """
-    returns a num.array, slices a matrix along specific axes.
-    """
-    return matrix[axes.get(0, slice(None)), axes.get(1, slice(None))]
+    """return the tuple"""
+    slices = [slice(None)] * matrix.ndim
+    for axis, slice_ in axes.items():
+        slices[axis] = slice(*slice_)
+    return matrix[tuple(slices)]

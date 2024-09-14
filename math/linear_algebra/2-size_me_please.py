@@ -5,8 +5,8 @@ def matrix_shape(matrix):
 
 def matrix_shape(matrix):
     '''returns list of ints of the dimensions of given matrix'''
-    findshape = []
-    while type(matrix) == list:
-        findshape.append(len(matrix))
+     matrix_shape = []
+    while (type(matrix) is list):
+        matrix_shape.append(len(matrix))
         matrix = matrix[0]
-    return findshape
+    return matrix_shape

@@ -1,12 +1,8 @@
 #!/usr/bin/env python3
-'''
-defines a function  that performs matrix multiplication
-'''
-
+""" Define function that performs matrix multiplication with numpy """
 import numpy as np
 
 
-
 def np_matmul(mat1, mat2):
-     """ returns new concatentation of two matrices """
-  return np.dot(mat1, mat2)
+    """return matrix multiplication using numpy.ndarrays"""
+    return np.matmul(mat1, mat2)
