@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""
-defines a fuction that multiplies two matrices
-"""
+"""defines a fuction that multiplies two matrices"""
+
+
 
 def mat_mul(mat1, mat2):
-    """ returns new matrix that is the product of two 2D matrices """
+    """returns new matrix that is the product of two 2D matrice"""
     if len(mat1[0]) != len(mat2):
-        return None
+       return None
 
     newmat = [[0 for i in range(len(mat2[0]))] for j in range(len(mat1))]
 
