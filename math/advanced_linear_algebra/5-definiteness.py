@@ -9,7 +9,7 @@ import numpy as np
 
 def definiteness(matrix):
     """
-    matrix: A numpy.ndarray of shape (n, n) whose definiteness should be calculated.
+    matrix: A numpy.ndarray of shape (n, n) whose definiteness
 
     Returns: matrix does not fit any of the definiteness categories,
 
