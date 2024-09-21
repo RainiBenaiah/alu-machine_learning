@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
+
 """
-Defines the fuction minor(matrix)
+Defines the functions minor(matrix) and determinant(matrix)
 """
 
 
@@ -8,9 +9,9 @@ def minor(matrix):
   """
   Calculates the minor of a square matrix.
   """
-  if not isinstance(matrix, list) or len(matrix) == 0\
-       or not all(isinstance(row, list) for row in matrix):
-        raise TypeError("matrix must be a list of lists")
+  if not isinstance(matrix, list) or len(matrix) == 0 \
+      or not all(isinstance(row, list) for row in matrix):
+    raise TypeError("matrix must be a list of lists")
 
   n = len(matrix)
   if any(len(row) != n for row in matrix):
@@ -27,6 +28,7 @@ def minor(matrix):
       minors[i].append(determinant(submatrix))
 
   return minors
+
 
 def determinant(matrix):
     """
