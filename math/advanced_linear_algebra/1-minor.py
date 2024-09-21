@@ -1,33 +1,32 @@
 #!/usr/bin/env python3
-
 """
-Defines the functions minor(matrix) and determinant(matrix)
+Defines the fuction minor(matrix)
 """
 
 
 def minor(matrix):
-  """
-  Calculates the minor of a square matrix.
-  """
-  if not isinstance(matrix, list) or len(matrix) == 0 \
-      or not all(isinstance(row, list) for row in matrix):
-    raise TypeError("matrix must be a list of lists")
+    """
+    Calculates the minor of a square matrix.
+    """
+    if not isinstance(matrix, list) or len(matrix) == 0 \
+       or not all(isinstance(row, list) for row in matrix):
+        raise TypeError("matrix must be a list of lists")
 
-  n = len(matrix)
-  if any(len(row) != n for row in matrix):
-    raise ValueError("matrix must be a non-empty square matrix")
+    n = len(matrix)
+    if any(len(row) != n for row in matrix):
+        raise ValueError("matrix must be a non-empty square matrix")
 
-  if n == 1:
-    return [[1]]
+    if n == 1:
+       return [[1]]
 
-  minors = []
-  for i in range(n):
-    minors.append([])
-    for j in range(n):
-      submatrix = [row[:j] + row[j+1:] for row in (matrix[:i] + matrix[i+1:])]
-      minors[i].append(determinant(submatrix))
+    minors = []
+    for i in range(n):
+        minors.append([])
+        for j in range(n):
+            submatrix = [row[:j] + row[j+1:] for row in (matrix[:i] + matrix[i+1:])]
+            minors[i].append(determinant(submatrix))
 
-  return minors
+    return minors
 
 
 def determinant(matrix):
