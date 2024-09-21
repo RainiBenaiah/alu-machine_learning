@@ -30,6 +30,7 @@ def cofactor(matrix):
 
     return cofactors
 
+
 def determinant(matrix):
     """
     matrix: A list of lists representing a square matrix.
