@@ -28,7 +28,6 @@ def adjugate(matrix):
             sign = (-1) ** (i + j)
             cofactors[i].append(sign * determinant(submatrix))
 
-
     adjugate_matrix = [[cofactors[j][i] for
                         j in range(n)] for i in range(n)]
 
