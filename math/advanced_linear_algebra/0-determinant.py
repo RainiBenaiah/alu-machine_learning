@@ -20,13 +20,8 @@ def determinant(matrix):
         raise ValueError("matrix must be a square matrix")
 
     # Handle the case of an empty matrix (0x0)
-    for row in matrix:
-        if type(row) is not list:
-            raise TypeError("matrix must be a list of lists")
-        if matrix == [[]]:
-            return 1
-        if len(row) != matrix_size:
-            raise ValueError("matrix must be a square matrix")
+    if matrix == [[]]:
+        return 1
 
     if n == 1:
         return matrix[0][0]
