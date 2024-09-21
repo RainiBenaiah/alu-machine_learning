@@ -17,13 +17,14 @@ def minor(matrix):
         raise ValueError("matrix must be a non-empty square matrix")
 
     if n == 1:
-       return [[1]]
+        return [[1]]
 
     minors = []
     for i in range(n):
         minors.append([])
         for j in range(n):
-            submatrix = [row[:j] + row[j+1:] for row in (matrix[:i] + matrix[i+1:])]
+            submatrix = [row[:j] + row[j+1:]\
+                    for row in (matrix[:i] + matrix[i+1:])]
             minors[i].append(determinant(submatrix))
 
     return minors
