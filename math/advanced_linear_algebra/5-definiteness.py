@@ -11,11 +11,7 @@ def definiteness(matrix):
     """
     matrix: A numpy.ndarray of shape (n, n) whose definiteness should be calculated.
 
-    Returns:
-        The string "Positive definite", "Positive semi-definite", "Negative semi-definite",
-        "Negative definite", or "Indefinite" if the matrix is positive definite, positive
-        semi-definite, negative semi-definite, negative definite of indefinite,
-        respectively. If matrix does not fit any of the above categories, return None.
+    Returns: matrix does not fit any of the definiteness categories,
 
     Raises:
         TypeError: If matrix is not a numpy.ndarray.
