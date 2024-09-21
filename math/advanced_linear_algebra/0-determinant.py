@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-
 """
 Defines a function that Calculates the determinant of a square matrix.
 """
+
 
 def determinant(matrix):
     """
@@ -12,7 +12,7 @@ def determinant(matrix):
         The determinant of the matrix.
     """
 
-    if not isinstance(matrix, list):
+    if type(matrix) is not list:
         raise TypeError("matrix must be a list of lists")
 
     n = len(matrix)
@@ -20,8 +20,13 @@ def determinant(matrix):
         raise ValueError("matrix must be a square matrix")
 
     # Handle the case of an empty matrix (0x0)
-    if matrix == [[]]:
-        return 1
+    for row in matrix:
+        if type(row) is not list:
+            raise TypeError("matrix must be a list of lists")
+        if matrix == [[]]:
+            return 1
+        if len(row) != matrix_size:
+            raise ValueError("matrix must be a square matrix")
 
     if n == 1:
         return matrix[0][0]
