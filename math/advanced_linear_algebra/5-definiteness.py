@@ -20,7 +20,7 @@ def definiteness(matrix):
     if matrix.shape[0] != matrix.shape[1]:
         return None
 
-     if not np.allclose(matrix, matrix.T):
+    if not np.allclose(matrix, matrix.T):
         return None
 
     eigenvalues = np.linalg.eigvals(matrix)
