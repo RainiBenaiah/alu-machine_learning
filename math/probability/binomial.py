@@ -55,7 +55,7 @@ class Binomial:
 
     def cdf(self, k):
         '''
-        cdf function returns the sum of the kth value of the binomial distribution
+        cdf function returns the sum of the kth value of the binomial
         '''
         if not isinstance(k, int):
             k = int(k)
