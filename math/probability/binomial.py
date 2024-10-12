@@ -46,7 +46,8 @@ class Binomial:
         nk_fact = 1
         for i in range(1, self.n - k + 1):
             nk_fact *= i
-        return (n_fact / (k_fact * nk_fact)) * (self.p ** k) * ((1 - self.p) ** (self.n - k))
+        return (n_fact / (k_fact * nk_fact)) *
+               (self.p ** k) * ((1 - self.p) ** (self.n - k))
 
     def cdf(self, k):
         '''
