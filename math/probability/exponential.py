@@ -30,7 +30,7 @@ class Exponential:
 
     def cdf(self, x):
         '''
-        cdf function returns the sum of the xth value of exponential distribution
+        cdf function returns the sum of the xth value of exponential
         '''
         if x < 0:
             return 0
