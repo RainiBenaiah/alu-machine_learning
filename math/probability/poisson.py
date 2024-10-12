@@ -32,7 +32,7 @@ class Poisson:
         for i in range(1, k + 1):
             k_fact *= i
         return (self.lambtha**k) * (2.7182818285**-self.lambtha) / k_fact
-    
+
     def cdf(self, k):
         '''
         cdf function returns the sum of the kth value of poisson distribution
