@@ -22,3 +22,19 @@ class MultiNormal:
         self.mean = np.mean(data, axis=1).reshape(-1, 1)
         centered_data = data - self.mean
         self.cov = np.dot(centered_data, centered_data.T) / (data.shape[1] - 1)
+
+    def pdf(self, x):
+        """
+        pdf function that returns the pdf of the data point
+        """
+        if not isinstance(x, np.ndarray) or len(x.shape) != 2:
+            raise TypeError("x must be a 2D numpy.ndarray")
+        if x.shape[0] != self.mean.shape[0] or x.shape[1] != 1:
+            raise ValueError("x must have the same number of columns as data")
+        n = self.mean.shape[0]
+        det = np.linalg.det(self.cov)
+        inv = np.linalg.inv(self.cov)
+        x_minus_mean = x - self.mean
+        pdf = (1 / ((2 * np.pi) ** (n / 2) * np.sqrt(det)) *
+               np.exp(-0.5 * np.dot(np.dot(x_minus_mean.T, inv), x_minus_mean)))
+        return pdf
