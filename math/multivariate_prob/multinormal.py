@@ -28,9 +28,9 @@ class MultiNormal:
         pdf function that returns the pdf of the data point
         """
         if not isinstance(x, np.ndarray) or len(x.shape) != 2:
-            raise TypeError("x must be a 2D numpy.ndarray")
+            raise TypeError("x must be a numpy.ndarray")
         if x.shape[0] != self.mean.shape[0] or x.shape[1] != 1:
-            raise ValueError("x must have the same number of columns as data")
+            raise ValueError("x must have the shape ({d}, 1)")
         n = self.mean.shape[0]
         det = np.linalg.det(self.cov)
         inv = np.linalg.inv(self.cov)
