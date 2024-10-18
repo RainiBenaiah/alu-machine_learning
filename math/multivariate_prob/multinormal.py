@@ -16,23 +16,22 @@ class MultiNormal:
         if not isinstance(data, np.ndarray) or len(data.shape) != 2:
             raise TypeError("data must be a 2D numpy.ndarray")
         if data.shape[1] < 2:
-            raise ValueError(
-                "data must contain multiple data points"
-            )
+            raise ValueError("data must contain multiple data points")
+        
         self.mean = np.mean(data, axis=1).reshape(-1, 1)
         centered_data = data - self.mean
         self.cov = np.dot(centered_data, centered_data.T) / (data.shape[1] - 1)
 
-     def pdf(self, x):
+    def pdf(self, x):
         '''
-        Constructor
+        Computes the PDF at a data point
         '''
         if not isinstance(x, np.ndarray):
             raise TypeError("x must be a numpy.ndarray")
 
         d = self.cov.shape[0]
         if x.shape != (d, 1):
-            raise ValueError("x must have the shape ({}, 1)".format(d))
+            raise ValueError(f"x must have the shape ({d}, 1)")
 
         det = np.linalg.det(self.cov)
         inv = np.linalg.inv(self.cov)
@@ -41,6 +40,5 @@ class MultiNormal:
         pdf_nom = 1 / ((2 * np.pi) ** (d / 2) * np.sqrt(det))
         pdf_value = pdf_nom * np.exp(expo)
 
-        return float(pdf_value)   
-
+        return float(pdf_value)
 
