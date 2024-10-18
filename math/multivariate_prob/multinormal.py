@@ -23,22 +23,16 @@ class MultiNormal:
         self.cov = np.dot(centered_data, centered_data.T) / (data.shape[1] - 1)
 
     def pdf(self, x):
-        '''
-        Computes the PDF at a data point
-        '''
+        """
+        Method that calculates the PDF at a data point
+        """
         if not isinstance(x, np.ndarray):
             raise TypeError("x must be a numpy.ndarray")
-
-        d = self.cov.shape[0]
-        if x.shape != (d, 1):
-            raise ValueError(f"x must have the shape ({d}, 1)")
-
-        det = np.linalg.det(self.cov)
-        inv = np.linalg.inv(self.cov)
-        centered_x = x - self.mean
-        expo = -0.5 * np.dot(np.dot(centered_x.T, inv), centered_x)
-        pdf_nom = 1 / ((2 * np.pi) ** (d / 2) * np.sqrt(det))
-        pdf_value = pdf_nom * np.exp(expo)
-
-        return float(pdf_value)
+        if len(x.shape) != 2 or x.shape[1] != 1:
+            raise ValueError("x must have the shape ({}, 1)".format(self.mean.shape[0]))
+        n = self.mean.shape[0]
+        x_m = x - self.mean
+        pdf = 1 / np.sqrt((2 * np.pi) ** n * np.linalg.det(self.cov)) * \
+            np.exp(-np.dot(np.dot(x_m.T, np.linalg.inv(self.cov)), x_m) / 2)
+        return pdf.flatten()[0]
 
