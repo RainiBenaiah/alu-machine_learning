@@ -33,7 +33,7 @@ class MultiNormal:
             )
         n = self.mean.shape[0]
         x_m = x - self.mean
-        pdf =(
+        pdf = (
                 1 / np.sqrt((2 * np.pi) ** n * np.linalg.det(self.cov))
                 * np.exp(
                     -np.dot(np.dot(x_m.T, np.linalg.inv(self.cov)), x_m) / 2)
