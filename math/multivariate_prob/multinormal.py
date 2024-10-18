@@ -35,6 +35,6 @@ class MultiNormal:
         pdf =(
                 1 / np.sqrt((2 * np.pi) ** n * np.linalg.det(self.cov))
                 * np.exp(
-                    -np.dot(np.dot(x_m.T, np.linalg.inv(self.cov)), x_m) / 2
-                    )
+                    -np.dot(np.dot(x_m.T, np.linalg.inv(self.cov)), x_m) / 2)
+        )
         return pdf.flatten()[0]
