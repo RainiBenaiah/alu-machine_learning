@@ -27,15 +27,12 @@ class MultiNormal:
         """
         if not isinstance(x, np.ndarray):
             raise TypeError("x must be a numpy.ndarray")
-        if len(x.shape) != 2 or x.shape[1] != 1:
-            raise ValueError(
-                "x must have the shape ({}, 1)".format(self.mean.shape[0])
-            )
-        n = self.mean.shape[0]
+        d = self.mean.shape[0]
+        if x.shape != (d, 1):
+            raise ValueError(f"x must have the shape ({d}, 1)")
         x_m = x - self.mean
         pdf = (
-                1 / np.sqrt((2 * np.pi) ** n * np.linalg.det(self.cov))
-                * np.exp(
-                    -np.dot(np.dot(x_m.T, np.linalg.inv(self.cov)), x_m) / 2)
+                1 / np.sqrt((2 * np.pi) ** d * np.linalg.det(self.cov))
+                * np.exp(-0.5 * np.dot(np.dot(x_m.T, np.linalg.inv(self.cov)), x_m))
         )
         return pdf.flatten()[0]
