@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-import numpy as np
 """
 defines a function that performs a valid convolution on grayscale images
 """
+import numpy as np
 
 
 def convolve_grayscale_valid(images, kernel):
@@ -20,6 +20,7 @@ def convolve_grayscale_valid(images, kernel):
 
     for i in range(new_h):
         for j in range(new_w):
-            output[:, i, j] = np.sum(images[:, i:i+kh, j:j+kw] * kernel, axis=(1, 2))
+            output[:, i, j] = np.sum(images[:, i:i+kh, j:j+kw]
+            * kernel, axis=(1, 2))
 
     return output
