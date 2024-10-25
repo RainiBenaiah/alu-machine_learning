@@ -1,31 +1,36 @@
 #!/usr/bin/env python3
-'''
-defines a same convolution padding function
-'''
+"""
+defines a function that performs a convolution padding
+"""
 import numpy as np
 
 
 def convolve_grayscale_padding(images, kernel, padding):
     """
-    Function to perform a same convolution on grayscale images
-    Returns:numpy.ndarray - shape (m, h, w)
+    Function to perform a convolution on grayscale images with
+    custom padding
+    Returns: numpy.ndarray - shape (m, new_h, new_w)
     """
     m, h, w = images.shape
     kh, kw = kernel.shape
     ph, pw = padding
 
-    output = np.zeros((m, h, w))
+    new_h = h + 2 * ph - kh + 1
+    new_w = w + 2 * pw - kw + 1
 
     padded_images = np.pad(
-        images,
-        ((0, 0), (ph, ph), (pw, pw))
-        )
+       images,
+       ((0, 0), (ph, ph), (pw, pw)),
+       mode='constant'
+       )
 
-    for i in range(h):
-        for j in range(w):
-            output[:, i, j] = np.sum(
-                padded_images[:, i:i+kh, j:j+kw] * kernel,
-                axis=(1, 2)
-                )
+    convolved_images = np.zeros((m, new_h, new_w))
 
-    return output
+    for i in range(new_h):
+        for j in range(new_w):
+            convolved_images[:, i, j] = np.sum(
+            padded_images[:, i:i+kh, j:j+kw] * kernel,
+            axis=(1, 2)
+            )
+
+    return convolved_images
