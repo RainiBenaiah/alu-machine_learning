@@ -26,7 +26,9 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
 
     padded_h = h + 2 * ph
     padded_w = w + 2 * pw
-    padded_images = np.pad(images, ((0, 0), (ph, ph), (pw, pw), (0, 0)), mode='constant')
+    padded_images = np.pad(
+       images, ((0, 0), (ph, ph), (pw, pw), (0, 0)), mode='constant'
+       )
 
     output_h = (padded_h - kh) // sh + 1
     output_w = (padded_w - kw) // sw + 1
@@ -40,9 +42,10 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
                 horiz_start = j * sw
                 horiz_end = horiz_start + kw
                 output[:, i, j, k] = np.sum(
-                    padded_images[:, vert_start:vert_end, horiz_start:horiz_end, :] *
-                    kernels[:, :, :, k],
+                    padded_images[
+                       :, vert_start:vert_end, horiz_start:horiz_end, :
+                    ] *kernels[:, :, :, k],
                     axis=(1, 2, 3)
                 )
 
-  return output
+    return output
