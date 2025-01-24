@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""one hot encoding"""
+"""One Hot Encode"""
 
 
 import numpy as np
