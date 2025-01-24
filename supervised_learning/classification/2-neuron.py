@@ -44,10 +44,10 @@ class Neuron():
         """
         return self.__A
 
-def forward_prop(self, X):
-    """
-    Forward propagation function of the neuron
-    """
-    z = np.matmul(self.__W, X) + self.__b
-    self.A = 1 / (1 + np.exp(-z))
-    return self.__A
+    def forward_prop(self, X):
+        """
+        Forward propagation function of the neuron
+        """
+        z = np.matmul(self.__W, X) + self.__b
+        self.A = 1 / (1 + np.exp(-z))
+        return self.__A
