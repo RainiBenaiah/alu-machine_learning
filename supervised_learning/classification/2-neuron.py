@@ -49,5 +49,5 @@ class Neuron():
         Forward propagation function of the neuron
         """
         z = np.matmul(self.__W, X) + self.__b
-        self.A = 1 / (1 + np.exp(-z))
+        self.__A = 1 / (1 + np.exp(-z))
         return self.__A
