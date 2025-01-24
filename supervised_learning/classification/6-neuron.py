@@ -60,13 +60,14 @@ class Neuron():
         cost = -1 / m * np.sum(Y * np.log(A) + (1 - Y) *
                                np.log(1.0000001 - A))
         return cost
-        
+
     def evaluate(self, X, Y):
         """
         Evaluates the neuron’s predictions
         """
         A = self.forward_prop(X)
         cost = self.cost(Y, A)
+        prediction = np.where(A >= 0.5, 1, 0)
         return prediction, cost
 
     def gradient_descent(self, X, Y, A, alpha=0.05):
@@ -92,7 +93,7 @@ class Neuron():
         if type(alpha) != float:
             raise TypeError("alpha must be a float")
         if alpha <= 0:
-           raise ValueError("alpha must be positive")
+            raise ValueError("alpha must be positive")
         for i in range(iterations):
             A = self.forward_prop(X)
             self.gradient_descent(X, Y, A, alpha)
