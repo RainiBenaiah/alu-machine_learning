@@ -9,7 +9,7 @@ class NeuralNetwork:
     '''
     neural network with one hidden layer
     '''
-     def __init__(self, nx, nodes):
+    def __init__(self, nx, nodes):
         '''
         Neuron class constructor
         '''
