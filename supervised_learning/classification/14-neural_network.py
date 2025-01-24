@@ -116,15 +116,15 @@ class NeuralNetwork:
         """
         Trains the neural network
         """
-        if not isinstance(iterations, int):
+        if not type(iterations) is int:
             raise TypeError("iterations must be an integer")
         if iterations < 1:
             raise ValueError("iterations must be a positive integer")
         if not type(alpha) is float:
-            raise TypeError("alpha must be a number")
+            raise TypeError("alpha must be a float")
         if alpha <= 0:
             raise ValueError("alpha must be positive")
         for i in range(iterations):
-            self.forward_prop(X)
-            self.gradient_descent(X, Y, self.__A1, self.__A2, alpha)
+            __, A2 = self.forward_prop(X)
+            self.gradient_descent(X, Y, self.__A1, A2, alpha)
         return self.evaluate(X, Y)
