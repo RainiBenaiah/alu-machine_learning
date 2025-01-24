@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" 
+"""
 gradient descent
 """
 
@@ -44,39 +44,39 @@ class Neuron():
         """
         return self.__A
 
-def forward_prop(self, X):
-    """
-    Forward propagation function of the neuron
-    """
-    z = np.matmul(self.W, X) + self.b
-    self.A = 1 / (1 + np.exp(-z))
-    return self.__A
+    def forward_prop(self, X):
+        """
+        Forward propagation function of the neuron
+        """
+        z = np.matmul(self.__W, X) + self.__b
+        self.__A = 1 / (1 + np.exp(-z))
+        return self.__A
 
-def cost(self, Y, A):
-    """
-    Calculates the cost of the model using logistic regression
-    """
-    m = Y.shape[1]
-    cost = -np.sum((Y * np.log(A)) + ((1 - Y) * np.log(1.0000001 - A))) / m
-    return cost
+    def cost(self, Y, A):
+        """
+        Calculates the cost of the model using logistic regression
+        """
+        m = Y.shape[1]
+        cost = -np.sum((Y * np.log(A)) + ((1 - Y) * np.log(1.0000001 - A))) / m
+        return cost
 
-def evaluate(self, X, Y):
-    """
-    Evaluates the neuron’s predictions
-    """
-    A = self.forward_prop(X)
-    cost = self.cost(Y, A)
-    prediction = np.round(A).astype(int)
-    return prediction, cost
+    def evaluate(self, X, Y):
+        """
+        Evaluates the neuron’s predictions
+        """
+        A = self.forward_prop(X)
+        cost = self.cost(Y, A)
+        prediction = np.round(A).astype(int)
+        return prediction, cost
 
-def gradient_descent(self, X, Y, A, alpha=0.05):
-    """
-    Calculates one pass of gradient descent on the neuron
-    """
-    m = Y.shape[1]
-    dz = A - Y
-    db = np.sum(dz) / m
-    dw = np.matmul(X, dz.T) / m
-    self.__W = self.__W - (alpha * dw).T
-    self.__b = self.__b - alpha * db
-    return self.__W, self.__b
+    def gradient_descent(self, X, Y, A, alpha=0.05):
+        """
+        Calculates one pass of gradient descent on the neuron
+        """
+        m = Y.shape[1]
+        dz = A - Y
+        db = np.sum(dz) / m
+        dw = np.matmul(X, dz.T) / m
+        self.__W = self.__W - (alpha * dw).T
+        self.__b = self.__b - alpha * db
+        return self.__W, self.__b
