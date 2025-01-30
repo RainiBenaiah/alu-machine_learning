@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Evaluate"""
+"""Model Evaluation"""
 import tensorflow as tf
 
 
@@ -16,4 +16,4 @@ def evaluate(X, Y, save_path):
         accuracy = tf.get_collection('accuracy')[0]
         loss = tf.get_collection('loss')[0]
         loss_value, accuracy_value = sess.run((loss, accuracy), feed_dict={x: X, y: Y})
-        return loss_value, accuracy_value
+    return loss_value, accuracy_value
