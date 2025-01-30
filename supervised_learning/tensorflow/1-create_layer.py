@@ -4,7 +4,6 @@
 import tensorflow as tf
 
 
-
 def create_layer(prev, n, activation):
     """
     Create a layer
