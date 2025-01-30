@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Model Evaluation"""
+""" Evaluate model """
+
+
 import tensorflow as tf
 
 
 def evaluate(X, Y, save_path):
     """
-    Evaluates the output of a neural network
+    Function that evaluates the output of a neural network
     """
     with tf.Session() as sess:
         saver = tf.train.import_meta_graph(save_path + '.meta')
@@ -15,5 +17,8 @@ def evaluate(X, Y, save_path):
         y_pred = tf.get_collection('y_pred')[0]
         accuracy = tf.get_collection('accuracy')[0]
         loss = tf.get_collection('loss')[0]
-        loss_value, accuracy_value = sess.run((loss, accuracy), feed_dict={x: X, y: Y})
-    return loss_value, accuracy_value
+        feed_dict = {x: X, y: Y}
+        pred = sess.run(y_pred, feed_dict)
+        acc = sess.run(accuracy, feed_dict)
+        cost = sess.run(loss, feed_dict)
+    return (pred, acc, cost)
